@@ -60,6 +60,13 @@ def draw():
     win.blit(images[hangman_status], (150,100))
     pygame.display.update()
 
+def display_message(message):
+        win.fill(WHITE)
+        text = WORD_FONT.render(message, 1, BLACK)
+        win.blit(text, (WIDTH/2 - text.get_width()/2, HEIGHT/2 - text.get_height()/2))
+        pygame.display.update()
+        pygame.time.delay(3000)
+
 while run:
     clock.tick(FPS)
     draw()
@@ -78,5 +85,20 @@ while run:
                         guessed.append(ltr)
                         if ltr not in word:
                             hangman_status += 1
-            
+    
+    won = True
+    for letter in word:
+        if letter not in guessed:
+            won = False
+            break
+    
+    if won:
+        display_message("You Win!")
+        break
+
+    if hangman_status == 6:
+        display_message("You Lose!")
+        break
+
+
 pygame.quit()
