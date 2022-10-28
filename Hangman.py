@@ -24,6 +24,7 @@ for i in range(26):
 
 LETTER_FONT = pygame.font.SysFont('comicsans', 40)
 WORD_FONT = pygame.font.SysFont('comicsans', 60)
+TITLE_FONT = pygame.font.SysFont('comicsans', 70)
 images = []
 for i in range(7):
     image = pygame.image.load("hangman" + str(i) + ".png")
@@ -41,6 +42,8 @@ run = True
 def draw():
     win.fill(WHITE)
 
+    text = TITLE_FONT.render("HANGMAN GAME", 1, BLACK)
+    win.blit(text, (WIDTH/2 - text.get_width()/2, 20))
     display_word = ""
     for letter in word:
         if letter in guessed:
@@ -61,6 +64,7 @@ def draw():
     pygame.display.update()
 
 def display_message(message):
+        pygame.time.delay(1000)
         win.fill(WHITE)
         text = WORD_FONT.render(message, 1, BLACK)
         win.blit(text, (WIDTH/2 - text.get_width()/2, HEIGHT/2 - text.get_height()/2))
@@ -99,6 +103,5 @@ while run:
     if hangman_status == 6:
         display_message("You Lose!")
         break
-
 
 pygame.quit()
