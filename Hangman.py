@@ -1,6 +1,7 @@
 from ctypes.wintypes import WORD
 import pygame
 import math
+import random
 
 WHITE = (255,255,255)
 BLACK = (0,0,0)
@@ -31,7 +32,8 @@ for i in range(7):
     images.append(image)
 
 hangman_status = 0
-word = "DEVELOPER"
+words = ["PYTHON","PYGAME","HANGMAN","IDLE",]
+word = random.choice(words)
 guessed = []
 
 
@@ -89,6 +91,8 @@ while run:
                         guessed.append(ltr)
                         if ltr not in word:
                             hangman_status += 1
+    
+    draw()
     
     won = True
     for letter in word:
