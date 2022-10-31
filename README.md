@@ -2,6 +2,8 @@
 
 Created Hangman game using Python3
 
+![](result.png)
+
 ## Dependency
 
 - Python 3
